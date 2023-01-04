@@ -1,4 +1,4 @@
-import { useRef, useState , useEffect, useMemo, useCallback } from "react";
+import {useReducer , useRef , useEffect, useMemo, useCallback } from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
@@ -6,7 +6,63 @@ import DiaryList from "./DiaryList";
 
 const App = () => {
 
-  const [data, setData] = useState([]); //초기값을 배열로 만들어줌
+  /** 
+   * ============= 
+   * reducer   : useReducer을 사용하기위한 컴포넌트
+   * =============
+
+    첫번째 파라미터 : 상태변화가 일어나기직전 state
+    두번째 파라미터 : 어떤 상태변화가 일어나야하는지 정보가 담겨져있음
+
+    여기서 리턴하는 값이 useReducer 첫번째 인덱스의 값이 된다
+   */
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "INIT": {
+        return action.data;
+      }
+      case "CREATE": {
+        const created_date = new Date().getTime();
+        const newItem = {
+          ...action.data,
+          created_date
+        };
+        return [newItem, ...state];
+      }
+      case "REMOVE": {
+        return state.filter((it) => it.id !== action.targetId);
+      }
+      case "EDIT": {
+        return state.map((it) =>
+          it.id === action.targetId //반복문 돌려서 id비교해서 새로운 content만 올림
+            ? {
+                ...it,
+                content: action.newContent
+              }
+            : it
+        );
+      }
+      default:
+        return state;
+    }
+  };
+
+  /** 
+    const [data, setData] = useState([]); //초기값을 배열로 만들어줌 대신에 사용
+    복잡한 컴포넌트를 구분하기 위해
+
+    대신 사용
+
+   * ============= 
+   * useReducer
+   * =============
+    첫번째 index : state
+    두번째 index : 상태를 변화시키는 액션을 발생시키는 함수
+
+    첫번째 파라미터 : reducer라는걸 꼭 전달해야한다. (일어난 상태 변화를 처리)
+    두번째 파라미터 : 첫번째 index의 초기값
+   */
+  const [data, dispatch] = useReducer(reducer, []);
 
   const dataId = useRef(0);
 
@@ -26,7 +82,8 @@ const App = () => {
       };
     });
 
-    setData(initData);
+    //setData(initData);
+    dispatch({ type: "INIT", data: initData });
   };
 
   /** MOUNT된 시점에만 사용_리스트데이터가져와서 뿌리기 */
@@ -46,39 +103,25 @@ const App = () => {
    *   두번째 인자 : 뎁스 인자 / 빈배열을 전달해줌으로 인해 MOUNT된 시점에만 사용
    */
   const onCreate = useCallback((author, content, emotion) => {
-    const created_date = new Date().getTime();
-    const newItem = {
-      author,
-      content,
-      emotion,
-      created_date,
-      id: dataId.current
-    };
+    dispatch({
+      type: "CREATE",
+      data: { author, content, emotion, id: dataId.current }
+    });
 
     dataId.current += 1; //====[4강]. id 데이터를 +1해서 넣기
-    
-    setData((data) => [newItem, ...data]); //==== [12강] 값이 아니라 함수로 리턴해도됨
   },[]);
 
    /** 삭제 일어났을때 사용하는 function*/
-   const onRemove = useCallback((tagetId) => {
+   const onRemove = useCallback((targetId) => {
     
-    /* 최적화하면서 아래 소스로 바뀜
-    const newDiaryList = data.filter((it)=> it.id !== tagetId);
-    setData(newDiaryList);
-    */
+    dispatch({ type: "REMOVE", targetId });
 
-    setData((data) => data.filter((it)=> it.id !== tagetId));
   },[]);
 
    /** 수정 일어났을때 사용하는 function*/
   const onEdit = useCallback((targetId, newContent) => {
     
-    setData( (data) => 
-      data.map((it) =>
-        it.id === targetId ? { ...it, content: newContent } : it
-      )
-    );
+    dispatch({ type: "EDIT", targetId, newContent });
 
   },[]);
 
