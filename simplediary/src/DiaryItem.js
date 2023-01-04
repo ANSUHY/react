@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
+import { DiaryDispatchContext } from "./App";
 
 /**
   ==========================================================================================
@@ -15,7 +16,9 @@ import React, { useRef, useState, useEffect } from "react";
   리턴값에서 실제로 쓸때는 {}로 감싸줘야하는거 잊지마세요!  
   
 */
-const DiaryItem = ({ onRemove, onEdit, id, author, content, emotion, created_date }) => {
+const DiaryItem = ({ id, author, content, emotion, created_date }) => {
+
+    const { onRemove, onEdit } = useContext(DiaryDispatchContext);
 
     /** 언제 랜딩되는지 찍어보기 */
     useEffect(() => {

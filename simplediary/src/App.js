@@ -1,51 +1,54 @@
-import {useReducer , useRef , useEffect, useMemo, useCallback } from "react";
+import React, {useReducer , useRef , useEffect, useMemo, useCallback } from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 
+export const DiaryStateContext = React.createContext(null);//export default로 내보낼순없음
+export const DiaryDispatchContext = React.createContext(null);
+
+ /** 
+ * ============= 
+ * reducer   : useReducer을 사용하기위한 컴포넌트
+ * =============
+
+  첫번째 파라미터 : 상태변화가 일어나기직전 state
+  두번째 파라미터 : 어떤 상태변화가 일어나야하는지 정보가 담겨져있음
+
+  여기서 리턴하는 값이 useReducer 첫번째 인덱스의 값이 된다
+  */
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
+    case "CREATE": {
+      const created_date = new Date().getTime();
+      const newItem = {
+        ...action.data,
+        created_date
+      };
+      return [newItem, ...state];
+    }
+    case "REMOVE": {
+      return state.filter((it) => it.id !== action.targetId);
+    }
+    case "EDIT": {
+      return state.map((it) =>
+        it.id === action.targetId //반복문 돌려서 id비교해서 새로운 content만 올림
+          ? {
+              ...it,
+              content: action.newContent
+            }
+          : it
+      );
+    }
+    default:
+      return state;
+  }
+};
+
 
 const App = () => {
-
-  /** 
-   * ============= 
-   * reducer   : useReducer을 사용하기위한 컴포넌트
-   * =============
-
-    첫번째 파라미터 : 상태변화가 일어나기직전 state
-    두번째 파라미터 : 어떤 상태변화가 일어나야하는지 정보가 담겨져있음
-
-    여기서 리턴하는 값이 useReducer 첫번째 인덱스의 값이 된다
-   */
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "INIT": {
-        return action.data;
-      }
-      case "CREATE": {
-        const created_date = new Date().getTime();
-        const newItem = {
-          ...action.data,
-          created_date
-        };
-        return [newItem, ...state];
-      }
-      case "REMOVE": {
-        return state.filter((it) => it.id !== action.targetId);
-      }
-      case "EDIT": {
-        return state.map((it) =>
-          it.id === action.targetId //반복문 돌려서 id비교해서 새로운 content만 올림
-            ? {
-                ...it,
-                content: action.newContent
-              }
-            : it
-        );
-      }
-      default:
-        return state;
-    }
-  };
 
   /** 
     const [data, setData] = useState([]); //초기값을 배열로 만들어줌 대신에 사용
@@ -140,15 +143,29 @@ const App = () => {
   /** 리턴전에 list로 받기 */
   const { goodCount, badCount, goodRatio } = getDiaryAnalysis;
 
+  /** 데이터를 Context를 이용하기위해 */
+  const store = {
+    data
+  };
+
+  /** funciton를 Context를 이용하기위해 : 재생성을 막기위해 useMemo씀*/
+  const memoizedDispatch = useMemo(() => {
+    return { onCreate, onRemove, onEdit };
+  }, []);
+
   return (
-    <div className="App">
-      <DiaryEditor onCreate={onCreate}/>
-      <div>전체 일기 : {data.length}</div>
-      <div>기분 좋은 일기 개수 : {goodCount}</div>
-      <div>기분 나쁜 일기 개수 : {badCount}</div>
-      <div>기분 좋은 일기 비율 : {goodRatio}</div>
-      <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
-    </div>
+    <DiaryStateContext.Provider value={store}>
+      <DiaryDispatchContext.Provider value={memoizedDispatch}>
+        <div className="App">
+          <DiaryEditor onCreate={onCreate}/>
+          <div>전체 일기 : {data.length}</div>
+          <div>기분 좋은 일기 개수 : {goodCount}</div>
+          <div>기분 나쁜 일기 개수 : {badCount}</div>
+          <div>기분 좋은 일기 비율 : {goodRatio}</div>
+          <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
+        </div>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 };
 export default App;

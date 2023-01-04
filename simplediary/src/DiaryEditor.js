@@ -1,6 +1,9 @@
-import React, { useEffect ,useRef, useState } from "react"; //==== 각기능을 사용하기위해 import
+import React, { useContext, useEffect ,useRef, useState } from "react"; //==== 각기능을 사용하기위해 import
+import { DiaryDispatchContext } from "./App";
 
-const DiaryEditor =  React.memo(({onCreate}) => {
+const DiaryEditor =  React.memo(() => {
+
+    const { onCreate } = useContext(DiaryDispatchContext);
 
     /** 언제 랜딩되는지 찍어보기 */
     useEffect(() => {
