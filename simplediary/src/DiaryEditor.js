@@ -12,7 +12,7 @@ const DiaryEditor = ({onCreate}) => {
         emotion: 1
     });
 
-    /** [1강] onChange가 되면 쓰는 함수(state 묶은것으로 처리가 간편해짐) */
+    /** [1강] onChange가 되면 쓰는 함수(state 묶은것으로 처리가 간편해짐)dd */
     const handleChangeState = (e) => {
         setState({
             ...state,   /** ==== [1강] 기존 값을 복사 */
