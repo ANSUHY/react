@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
  * 
  * 
  * 써보고싶으면 App.js에
- *   <LifeCycle /> 넣기
+ *   <OptimizeTest2 /> 넣기
  * 
 */
 const UnMountTest = () => {

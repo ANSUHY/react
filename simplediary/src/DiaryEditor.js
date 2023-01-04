@@ -1,6 +1,11 @@
-import { useRef, useState } from "react"; //==== 각기능을 사용하기위해 import
+import React, { useEffect ,useRef, useState } from "react"; //==== 각기능을 사용하기위해 import
 
-const DiaryEditor = ({onCreate}) => {
+const DiaryEditor =  React.memo(({onCreate}) => {
+
+    /** 언제 랜딩되는지 찍어보기 */
+    useEffect(() => {
+     console.log("DiaryEditor 렌더");
+    });
 
     const authorInput = useRef(); //=-== [2강] dom사용하기 위한 값 (input박스에 ref로 지정)
     const contentInput = useRef();//=-== [2강] dom사용하기 위한 값 (input박스에 ref로 지정)
@@ -12,7 +17,7 @@ const DiaryEditor = ({onCreate}) => {
         emotion: 1
     });
 
-    /** [1강] onChange가 되면 쓰는 함수(state 묶은것으로 처리가 간편해짐)dd */
+    /** [1강] onChange가 되면 쓰는 함수(state 묶은것으로 처리가 간편해짐) */
     const handleChangeState = (e) => {
         setState({
             ...state,   /** ==== [1강] 기존 값을 복사 */
@@ -85,5 +90,5 @@ const DiaryEditor = ({onCreate}) => {
             </div>
         </div>
     );
-};
-export default DiaryEditor;
+});
+export default DiaryEditor; /* 컴포넌트 선언하는 부분이 아니라 여기서 묶어도 된다 */

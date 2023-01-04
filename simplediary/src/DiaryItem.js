@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 /**
   ==========================================================================================
@@ -16,6 +16,11 @@ import { useRef, useState } from "react";
   
 */
 const DiaryItem = ({ onRemove, onEdit, id, author, content, emotion, created_date }) => {
+
+    /** 언제 랜딩되는지 찍어보기 */
+    useEffect(() => {
+      console.log("DiaryItem 렌더 " , {id} , '번째 아이템 렌더');
+    });
 
     const localContentInput = useRef();
     const [localContent, setLocalContent] = useState(content); //=== [6강] 기본 contents값을 넣어줌
@@ -85,5 +90,5 @@ const DiaryItem = ({ onRemove, onEdit, id, author, content, emotion, created_dat
     );
   };
   
-  export default DiaryItem;
+  export default React.memo(DiaryItem);
   
