@@ -9,6 +9,7 @@ const StyledButton = styled.button`
     cursor: pointer;
 `;
 
+/** 버튼 컴포넌트 */
 function Button(props) {
     const { title, onClick } = props;
 
