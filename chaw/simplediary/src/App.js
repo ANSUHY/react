@@ -2,7 +2,7 @@ import React, {useReducer , useRef , useEffect, useMemo, useCallback } from "rea
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
-import OptimizeTest1 from "./OptimizeTest1";
+
 
 
 /** Context 사용 */
@@ -159,7 +159,6 @@ const App = () => {
   return (
     <DiaryStateContext.Provider value={store}>
       <DiaryDispatchContext.Provider value={memoizedDispatch}>
-        <OptimizeTest1/>
         <div className="App">
           <DiaryEditor onCreate={onCreate}/>
           <div>전체 일기 : {data.length}</div>
