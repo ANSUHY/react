@@ -3,6 +3,7 @@ import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 
+/** Context 사용 */
 export const DiaryStateContext = React.createContext(null);//export default로 내보낼순없음
 export const DiaryDispatchContext = React.createContext(null);
 
