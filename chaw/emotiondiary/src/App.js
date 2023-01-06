@@ -40,7 +40,7 @@ export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, []);
+  const [data1, dispatch] = useReducer(reducer, []);
 
   useEffect(() => {
     const localData = localStorage.getItem("diary");
@@ -88,7 +88,7 @@ function App() {
   };
 
   return (
-    <DiaryStateContext.Provider value={data}>
+    <DiaryStateContext.Provider value={data1}>
       <DiaryDispatchContext.Provider
         value={{
           onCreate,
