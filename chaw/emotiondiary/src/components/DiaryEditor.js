@@ -22,7 +22,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const handleClickEmote = useCallback((emotion) => {
     setEmotion(emotion);
   }, []);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); /** 네비게이터로 리다이랙트 처럼 쓸수있음 (링크태그를 클릭 안했을때도 바로 보낼수 있음) */
 
   const handleSubmit = () => {
     if (content.length < 1) {

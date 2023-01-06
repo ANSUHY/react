@@ -99,9 +99,10 @@ function App() {
         <BrowserRouter>
           <div className="App">
             <Routes>
-              <Route path="/" element={<Home />} />
+              {/**===== <Route path="url주소" element={컴포넌트} /> */}
+              <Route path="/" element={<Home />} /> 
               <Route path="/new" element={<New />} />
-              <Route path="/edit/:id" element={<Edit />} />
+              <Route path="/edit/:id" element={<Edit />} /> {/** /diary/2 이런식으로 보내면됨 */}
               <Route path="/diary/:id" element={<Diary />} />
             </Routes>
           </div>

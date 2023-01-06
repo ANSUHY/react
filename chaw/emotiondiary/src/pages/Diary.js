@@ -8,7 +8,7 @@ import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
 
 const Diary = () => {
-  const { id } = useParams();
+  const { id } = useParams();  //=====App.js 에서 보낸  <Route path="/diary/:id" element={<Diary />} />id
   const diaryList = useContext(DiaryStateContext);
   const navigate = useNavigate();
   const [data, setData] = useState();
