@@ -57,6 +57,7 @@ function App() {
   }, []);
 
   const dataId = useRef(0);
+  
   // CREATE
   const onCreate = (date, content, emotion) => {
     dispatch({
@@ -70,10 +71,12 @@ function App() {
     });
     dataId.current += 1;
   };
+  
   // REMOVE
   const onRemove = (targetId) => {
     dispatch({ type: "REMOVE", targetId });
   };
+  
   // EDIT
   const onEdit = (targetId, date, content, emotion) => {
     dispatch({

@@ -14,6 +14,7 @@ const filterOptionList = [
   { value: "bad", name: "안좋은 감정만" },
 ];
 
+/** [ 컴포넌트 ] 메뉴 검색조건 control */
 const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
     <select
@@ -30,8 +31,9 @@ const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   );
 });
 
+/** [ 컴포넌트 ] 리스트화면에대한 컴포넌트 */
 const DiaryList = ({ diaryList }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //=====이걸 활용해서 direct를 할수있었음( onClick={() => navigate("/new")} )
   const [sortType, setSortType] = useState("latest");
   const [filter, setFilter] = useState("all");
 
@@ -56,6 +58,7 @@ const DiaryList = ({ diaryList }) => {
     const filteredList =
       filter === "all" ? copyList : copyList.filter((it) => filterCallBack(it));
 
+    //======compare 를 사용해서 오래된순,신규순 해줌
     const sortedList = filteredList.sort(compare);
     return sortedList;
   };

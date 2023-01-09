@@ -42,7 +42,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
       }
     }
 
-    navigate("/", { replace: true });
+    navigate("/", { replace: true }); //=====뒤로가기 막으면서 main으로 가기
   };
 
   const handleRemove = () => {

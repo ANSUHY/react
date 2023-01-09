@@ -4,7 +4,7 @@ const EmotionItem = ({
   emotion_id,
   emotion_img,
   emotion_descript,
-  onClick,
+  onClick, /**===========함수가 useState로 전달받은 함수 또는 useCallback으로 묶인 함수가 아니라면 강화된 컴포넌트라도 랜더링을 발생시킴  */
   isSelected,
 }) => {
   return (
