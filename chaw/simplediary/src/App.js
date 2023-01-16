@@ -114,7 +114,7 @@ const App = () => {
       data: { author, content, emotion, id: dataId.current }
     });
 
-    dataId.current += 1; //====[4강]. id 데이터를 +1해서 넣기
+    dataId.current += 1; //id 데이터를 +1해서 넣기
   },[]);
 
    /** 삭제 일어났을때 사용하는 function*/
