@@ -27,6 +27,20 @@ function App() {
                 }}>👍 {따봉[i]} </span>
               </h4>
               <p>2월 18일 발행</p>
+
+              {/**===== 삭제 기능 */}
+              <button onClick={() => {
+
+                let copy = [...글제목];
+                copy.splice(i, 1);
+                글제목변경(copy);
+
+                let copy2 = [...따봉];
+                copy2.splice(i, 1);
+                따봉변경(copy2);
+
+              }}>삭제</button>
+
             </div>
 
           )
@@ -39,6 +53,22 @@ function App() {
           :
           null
       }
+
+      {/**===== 발행 기능 */}
+      <div>
+        <input onChange={(e) => { 입력값변경(e.target.value) }} />
+        <button onClick={() => {
+
+          let copy = [...글제목];
+          copy.unshift(입력값);
+          글제목변경(copy)
+
+          let copy2 = [...따봉];
+          copy2.unshift(0);
+          따봉변경(copy2);
+
+        }}>글발행</button>
+      </div>
 
 
     </div>
