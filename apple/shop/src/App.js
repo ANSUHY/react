@@ -2,12 +2,15 @@ import './App.css';
 import bg from './bg.png';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Detail from './routes/Detail.js';
 
-import data from './data.js'; /** ===== 2. 변수 import */
+
+import data from './data.js';
 
 function App() {
 
-  let [shoes] = useState(data); /** ===== 3. import해온 변수 사용하기 */
+  let [shoes] = useState(data);
 
   return (
     <div className="App">
@@ -24,26 +27,35 @@ function App() {
         </Container>
       </Navbar>
 
-      {/* 메인메뉴 */}
-      <div>
-        <div className="main-bg" style={{ backgroundImage: 'url(' + bg + ')' }}></div>
-      </div>
+      {/** ========= 페이지 지정 ================== */}
+      <Routes>
+        <Route path="/" element={
+          <>
+            /* 메인메뉴 */
+            < div >
+              <div className="main-bg" style={{ backgroundImage: 'url(' + bg + ')' }}></div>
+            </div>
 
-      {/* component사용해서 이미지 보기 */}
-      <div className="container">
-        <div className="row">
-          {
-            shoes.map((a, i) => { /** ===== 4. map돌려서 컴포넌트에 [prop으로 한개의 객체] 보내서 생성 */
-              return (
-                <Card shoes={shoes[i]} i={i + 1} ></Card>
-              )
-            })
-          }
-        </div>
-      </div>
+            /* component사용해서 이미지 보기 */
+            <div className="container">
+              <div className="row">
+                {
+                  shoes.map((a, i) => {
+                    return (
+                      <Card key={i} shoes={shoes[i]} i={i + 1} ></Card>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </>
+        } />
 
+        {/** ========= 디테일 페이지가면서 ID넣어줌 */}
+        < Route path="/detail/:id" element={< Detail shoes={shoes} />} />
+      </Routes >
 
-    </div>
+    </div >
 
   );
 }
