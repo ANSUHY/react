@@ -21,4 +21,4 @@ let data = [
     }
 ]
 
-export default data; /** ===== 1. 변수 export */
+export default data; /** 변수 export */
