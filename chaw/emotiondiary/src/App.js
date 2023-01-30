@@ -40,6 +40,8 @@ export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
 function App() {
+
+  console.log("Bbbbbbbbbbbb ")
   const [data1, dispatch] = useReducer(reducer, []);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function App() {
   }, []);
 
   const dataId = useRef(0);
-  
+
   // CREATE
   const onCreate = (date, content, emotion) => {
     dispatch({
@@ -71,12 +73,12 @@ function App() {
     });
     dataId.current += 1;
   };
-  
+
   // REMOVE
   const onRemove = (targetId) => {
     dispatch({ type: "REMOVE", targetId });
   };
-  
+
   // EDIT
   const onEdit = (targetId, date, content, emotion) => {
     dispatch({
@@ -103,7 +105,7 @@ function App() {
           <div className="App">
             <Routes>
               {/**===== <Route path="url주소" element={컴포넌트} /> */}
-              <Route path="/" element={<Home />} /> 
+              <Route path="/" element={<Home />} />
               <Route path="/new" element={<New />} />
               <Route path="/edit/:id" element={<Edit />} /> {/** /diary/2 이런식으로 보내면됨 */}
               <Route path="/diary/:id" element={<Diary />} />

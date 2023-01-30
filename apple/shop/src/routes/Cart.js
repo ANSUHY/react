@@ -1,15 +1,26 @@
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
 import { changeName, addCount } from "./../store.js"
+import { useState } from 'react';
 
+
+function Child() {
+    console.log('재렌더링됨')
+    return <div>자식임</div>
+}
 
 function Cart() {
 
     let state = useSelector((state) => { return state })
     let dispatch = useDispatch();
 
+    let [count, setCount] = useState(0);
+
     return (
         <>
+            <Child />
+            <button onClick={() => { setCount(count + 1) }}> + </button>
+
             <button onClick={() => {
                 dispatch(changeName())
             }}>버튼임</button>

@@ -1,13 +1,15 @@
 import './App.css';
 import bg from './bg.png';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from "react-query";
-import Detail from './routes/Detail.js';
-import Cart from './routes/Cart.js';
 import data from './data.js';
+
+const Detail = lazy(() => import('./routes/Detail.js'))
+const Cart = lazy(() => import('./routes/Cart.js'))
+
 
 
 function App() {
@@ -41,33 +43,35 @@ function App() {
       </Navbar>
 
       {/**  페이지 지정 */}
-      <Routes>
-        <Route path="/" element={
-          <>
+      <Suspense fallback={<div>로딩중임</div>}>
+        <Routes>
+          <Route path="/" element={
+            <>
             /* 메인메뉴 */
-            < div >
-              <div className="main-bg" style={{ backgroundImage: 'url(' + bg + ')' }}></div>
-            </div>
+              < div >
+                <div className="main-bg" style={{ backgroundImage: 'url(' + bg + ')' }}></div>
+              </div>
 
             /* component사용해서 이미지 보기 */
-            <div className="container">
-              <div className="row">
-                {
-                  shoes.map((a, i) => {
-                    return (
-                      <Card key={i} shoes={shoes[i]} i={i} ></Card>
-                    )
-                  })
-                }
+              <div className="container">
+                <div className="row">
+                  {
+                    shoes.map((a, i) => {
+                      return (
+                        <Card key={i} shoes={shoes[i]} i={i} ></Card>
+                      )
+                    })
+                  }
+                </div>
               </div>
-            </div>
-          </>
-        } />
+            </>
+          } />
 
 
-        <Route path="/detail/:id" element={< Detail shoes={shoes} />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes >
+          <Route path="/detail/:id" element={< Detail shoes={shoes} />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes >
+      </Suspense>
 
     </div >
 
