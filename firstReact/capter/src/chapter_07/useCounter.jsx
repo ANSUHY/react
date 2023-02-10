@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-//======== 초기 count값을 파라미터로 받아서 증가밑 감소를 편리하게 해주는 hook
+//======== 초기 count값을 파라미터로 받아서 증가 및 감소를 편리하게 해주는 hook
 function useCounter(initialValue) {
     const [count, setCount] = useState(initialValue);
 
