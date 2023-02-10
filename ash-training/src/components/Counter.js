@@ -6,7 +6,14 @@ import { countState } from "../states/atoms";
 export const Counter = () => {
   
   //================ atom 사용하기
+  
+ 
   const [count, setCount] = useRecoilState(countState); //atoms.js에서 선언한 값
+  /*
+    위에것과 동일한 것
+    const count = useRecoilValue(countState);
+    const setCount = useSetRecoilState(countState);
+  */
   const resetCount = useResetRecoilState(countState); //atoms.js에서 선언한 값
 
   const increase = () => {
