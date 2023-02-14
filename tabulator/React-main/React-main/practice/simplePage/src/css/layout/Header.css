@@ -1,0 +1,24 @@
+.Header{
+    grid-area: 1/1/2/1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.Header .Title{
+    width: 200px;
+    text-align: center;
+}
+
+.Header .MainNav{
+    width: calc(100% - 500px);
+    min-width: 500px;
+}
+
+.Header .SubNav{
+    width: 300px;
+    text-align: center;
+}

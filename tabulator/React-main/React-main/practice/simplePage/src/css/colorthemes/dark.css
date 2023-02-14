@@ -1,0 +1,84 @@
+/* Main color */
+.MainGradient{
+    background: linear-gradient(90deg, rgb(0 0 0) 20%, rgb(62 62 62) 65%, rgb(47 47 47) 99%);
+}
+.BackColorPrimary{
+    background-color: white !important;
+}
+.BodyBack{
+  background-color: #282828 !important;
+}
+
+
+/* text */
+.ColorTitle{
+    color: white !important;
+}
+.ColorBody{
+    color: #282828 !important;
+}
+.ColorExtra{
+    color : #757575 !important;
+}
+.ColorDisabled{
+    color : #bdbdbd !important;
+}
+.ColorActive{
+/*  */
+}
+.ColorBrightest{
+    color:white !important;
+}
+.ColorDarkest{
+    color:black !important;
+}
+
+
+/* background */
+.BackColorTitle{
+  background-color: #131313 !important;
+}
+.BackColorBody{
+  background-color: #282828 !important;
+}
+.BackColorExtra{
+  background-color : #757575 !important;
+}
+.BackColorDisabled{
+  background-color : #bdbdbd !important;
+}
+.BackColorWhite{
+  background-color: white !important;
+}
+.BackColorConents{
+  background-color: #ccd2d9 !important;
+}
+.BackColorConentsLight{
+  background-color: #dfe3e7 !important;
+}
+.BackColorActive{
+/*  */
+}
+
+/* border */
+.BorderTitle{
+  border: 1px solid #131313;
+}
+.BorderBody{
+  border: 1px solid #282828;
+}
+.BorderExtra{
+  border: 1px solid #757575;
+}
+.BorderDisabled{
+  border: 1px solid #bdbdbd;
+}
+
+/* button:hover */
+.Button:hover, .RoundButton:hover{
+  background-color: #ffffff26 !important;
+}
+.ButtonDarken:hover, .RoundButtonDarken:hover{
+  background-color: #81889940 !important;
+}
+

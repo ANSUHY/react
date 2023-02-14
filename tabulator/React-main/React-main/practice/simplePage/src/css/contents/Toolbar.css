@@ -1,0 +1,21 @@
+.Toolbar{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Toolbar .Search{
+    padding-right: 20px;
+}
+
+.Toolbar .SettingButton{
+    width: calc(100% - 450px);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Toolbar .SettingButton .Item{
+    padding: 5px 10px;
+    margin: 0px 5px;
+}

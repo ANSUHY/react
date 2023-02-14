@@ -1,0 +1,23 @@
+.tabulator .tabulator-header .tabulator-col{
+    /* background-color: #9da1a9; */
+    color: #282c34;
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=none] 
+.tabulator-col-content .tabulator-col-sorter .tabulator-arrow {
+    border-bottom-color: #ffffff;
+}
+
+.tabulator-row .tabulator-cell {
+    white-space: break-spaces;
+}
+
+.tabulator .tabulator-footer, .tabulator .tabulator-header .tabulator-col{
+    background-color: #9da1a9;
+}
+
+.tabulator .tabulator-footer .tabulator-page{
+    border:none !important;
+    background: none !important;
+    font-size: 12px;
+}

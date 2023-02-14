@@ -1,0 +1,7 @@
+.Page{
+    grid-area: 2/1/3/1;
+    padding: 20px 5% 40px 5%;
+    align-items: center;
+    justify-content: center;
+    /* min-height = 540 ; */
+}

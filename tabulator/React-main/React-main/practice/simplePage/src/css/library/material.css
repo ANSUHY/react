@@ -1,0 +1,8 @@
+.MuiButton-root {
+    border-radius: 2px !important;
+    color: #1d1f26 !important;
+}
+.MuiButton-outlinedSizeSmall {
+    padding: 1px 4px !important;
+    font-size: 11px !important;
+}

@@ -1,0 +1,12 @@
+.App{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 60px minmax(600px, calc(100% - 200px)) 140px;
+  grid-template-columns: minmax(800px, 1fr);
+}
+.Body{
+  grid-area: 2/1/3/1;
+  height: 100%;
+  overflow: auto;
+}

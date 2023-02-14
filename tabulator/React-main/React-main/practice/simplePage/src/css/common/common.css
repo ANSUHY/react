@@ -1,0 +1,210 @@
+/* 1. default tags */
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button{
+  background: none;
+  border: none;
+  font: unset;
+  display: flex;
+}
+
+div{
+  box-sizing: border-box;
+}
+
+#root{
+  height: 100%;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 6px;
+  height:6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #aaaaaa; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* link */
+a:-webkit-any-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+/* 2. state */
+/* focus */
+:focus {
+  outline: none
+}
+:disabled{
+    cursor: unset !important;
+}
+
+
+/* 3. Custom Class */
+/* Color */
+.ColorWhite{
+  color: white !important;
+}
+.ColorError{
+  color: #dc0019 !important;  
+}
+.ColorPrimary{
+  color: #1976d2 !important;
+}
+.ColorWarning{
+  color: #ffab00 !important;
+}
+.ColorGood{
+  color: #4caf50 !important;
+}
+
+
+/* .BackColor */
+.BackColorWhite{
+  background-color: white !important;  
+}
+.BackColorError{
+  background-color: #dc0019 !important;  
+}
+.BackColorPrimary{
+  background-color: #1976d2 !important;
+}
+.BackColorLightPrimary{
+  background-color: #9accff !important;
+}
+.BackColorWarning{
+  background-color: #ffab00 !important;
+}
+.BackColorGood{
+  background-color: #4caf50 !important;
+}
+
+/* Border */
+.BorderWhite{
+  border: 1px solid white;
+}
+.BorderError{
+  border: 1px solid #dc0019;
+}
+.BorderPrimary{
+  border: 1px solid #1976d2;
+}
+.BorderLightPrimary{
+  border: 1px solid #9accff;
+}
+.BorderWarning{
+  border: 1px solid #ffab00;
+}
+.BorderGood{
+  border: 1px solid #4caf50;
+}
+
+
+/* Opacity */
+.Opacity3{
+  opacity: .3;
+}
+.Opacity5{
+  opacity: .5;
+}
+.Opacity8{
+  opacity: .8;
+}
+
+/* Size */
+.Size10{
+  font-size: 10px;
+}
+.Size12{
+  font-size: 12px;
+}
+.Size14{
+  font-size: 14px;
+}
+.Size16{
+  font-size: 16px;
+}
+.Size20{
+  font-size: 20px;
+}
+.Size26{
+  font-size: 26px;
+}
+.Size34{
+  font-size: 34px;
+}
+.Size48{
+  font-size: 48px;
+}
+
+/* SizeRes */
+.SizeRes10{
+  font-size: calc(10px + 1.5vmin);
+}
+.SizeRes12{
+  font-size: calc(12px + 1.5vmin);
+}
+.SizeRes14{
+  font-size: calc(14px + 1.5vmin);
+}
+.SizeRes16{
+  font-size: calc(16px + 1.5vmin);
+}
+.SizeRes20{
+  font-size: calc(20px + 2vmin);
+}
+.SizeRes26{
+  font-size: calc(26px + 2vmin);
+}
+.SizeRes34{
+  font-size: calc(34px + 2vmin);
+}
+.SizeRes48{
+  font-size: calc(48px + 2vmin);
+}
+
+/* Weight */
+.Bold{
+  font-weight: bold;
+}
+
+
+/* Radius */
+.Radius2{
+  border-radius: 2px;
+}
+
+.Radius50{
+  border-radius: 50%;
+}
+
+/* Button */
+.Button, .ButtonDarken{
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 3px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+.RoundButton, .RoundButtonDarken{
+  border-radius: 50%;
+  cursor: pointer;
+}
